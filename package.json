@@ -1,0 +1,13 @@
+{
+  "name": "ad-measurement-preflight",
+  "version": "0.1.1",
+  "private": true,
+  "description": "Open-source ad measurement preflight with OpenAI Ads readiness checks.",
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "verify": "npm test && node --check server.js && node --check api-handler.js && node --check app.js && node --check src/preflight/url-policy.js && node --check src/preflight/http-probe.js && node --check src/preflight/robots.js && node --check src/preflight/attribution.js && node --check src/preflight/pixel-static.js && node --check src/preflight/findings.js && node --check src/preflight/scan.js"
+  }
+}

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://chatgpt-ads-tracking-checker.vercel.app/sitemap.xml

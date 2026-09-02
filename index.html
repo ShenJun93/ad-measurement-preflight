@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Free ChatGPT Ads tracking and measurement checker for landing-page reachability, OAI-AdsBot readiness, oppref redirects, and OpenAI Pixel setup." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://chatgpt-ads-tracking-checker.vercel.app/" />
+  <meta property="og:title" content="ChatGPT Ads Tracking &amp; Measurement Checker" />
+  <meta property="og:description" content="Run a free preflight for ChatGPT Ads tracking, OAI-AdsBot access, oppref redirects, and OpenAI Pixel readiness." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://chatgpt-ads-tracking-checker.vercel.app/" />
+  <title>ChatGPT Ads Tracking &amp; Measurement Checker | Free Preflight</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">OPENAI ADS PREFLIGHT</p>
+      <h1>Check your ChatGPT Ads tracking before you spend</h1>
+      <p class="lede">Paste a public landing URL. Check OAI-AdsBot access, oppref redirect preservation, landing-page reachability, and basic OpenAI Pixel readiness. No signup.</p>
+      <form id="scan-form">
+        <label for="url">Landing page URL</label>
+        <div class="input-row">
+          <input id="url" name="url" type="url" inputmode="url" placeholder="https://example.com/landing" autocomplete="url" required />
+          <button id="scan" type="submit">Run free preflight</button>
+        </div>
+        <p class="privacy">Server-side scanner. Reports never return fetched page bodies or query-string values. OAI-AdsBot checks are simulations, not proof of OpenAI crawler access.</p>
+      </form>
+    </section>
+    <section id="progress" class="panel hidden" aria-live="polite">Running reachability, crawler, robots, redirect and static measurement checks…</section>
+    <section id="error" class="panel error hidden" aria-live="assertive"></section>
+    <section id="report" class="hidden" aria-live="polite">
+      <div class="summary panel"><div><p class="eyebrow">MEASUREMENT HEALTH</p><h2 id="overall">—</h2></div><div class="score"><strong id="score">—</strong><span>/100</span></div></div>
+      <div class="meta"><span id="scanned-url"></span><span id="duration"></span></div>
+      <div id="categories"></div>
+      <div class="panel monitor-cta"><div><h3>Would you want this checked automatically every day?</h3><p>Monitoring is not built yet. This button records only anonymous demand for the feature—no URL or email.</p></div><button id="monitor-interest" type="button">Yes, I’d monitor this</button></div>
+      <div class="limitations panel"><h3>Known limits</h3><ul id="limitations"></ul></div>
+    </section>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
