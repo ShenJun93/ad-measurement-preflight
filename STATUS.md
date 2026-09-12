@@ -1,6 +1,6 @@
 # Status
 
-Current public version: **0.1.1**
+Current public version: **0.1.2**
 
 ## In scope
 
