@@ -33,3 +33,31 @@ test('landing page targets high-intent ChatGPT Ads measurement queries with cano
   assert.match(html, /property="og:title" content="ChatGPT Ads Tracking &amp; Measurement Checker"/);
   assert.match(html, /<h1>Check your ChatGPT Ads tracking before you spend<\/h1>/);
 });
+
+test('repository discovery surface explains the ChatGPT Ads tracking job and links focused reference docs to the live checker', async () => {
+  const [readme, adsbot, oppref, preflight] = await Promise.all([
+    readFile(new URL('../README.md', import.meta.url), 'utf8'),
+    readFile(new URL('../docs/OAI-ADSBOT.md', import.meta.url), 'utf8'),
+    readFile(new URL('../docs/OPPREF.md', import.meta.url), 'utf8'),
+    readFile(new URL('../docs/MEASUREMENT-PREFLIGHT.md', import.meta.url), 'utf8'),
+  ]);
+
+  assert.match(readme, /ChatGPT Ads conversion tracking preflight/i);
+  assert.match(readme, /Run the live checker/i);
+  assert.match(readme, /docs\/OAI-ADSBOT\.md/);
+  assert.match(readme, /docs\/OPPREF\.md/);
+  assert.match(readme, /docs\/MEASUREMENT-PREFLIGHT\.md/);
+
+  for (const doc of [adsbot, oppref, preflight]) {
+    assert.match(doc, /https:\/\/chatgpt-ads-tracking-checker\.vercel\.app\//);
+    assert.match(doc, /not affiliated with or endorsed by OpenAI/i);
+  }
+});
+
+test('public status version matches package version', async () => {
+  const [pkg, status] = await Promise.all([
+    readFile(new URL('../package.json', import.meta.url), 'utf8').then(JSON.parse),
+    readFile(new URL('../STATUS.md', import.meta.url), 'utf8'),
+  ]);
+  assert.match(status, new RegExp(`Current public version: \\*\\*${pkg.version.replaceAll('.', '\\.')}\\*\\*`));
+});

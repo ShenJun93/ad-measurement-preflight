@@ -1,8 +1,10 @@
-# Ad Measurement Preflight
+﻿# Ad Measurement Preflight
 
-Open-source preflight for ad measurement paths. The current checks focus on readiness signals relevant to OpenAI Ads / ChatGPT Ads: landing reachability, OAI-AdsBot access, `oppref` redirect preservation, and basic OpenAI Measurement Pixel setup.
+**ChatGPT Ads conversion tracking preflight** for landing pages and measurement paths.
 
-**Live demo:** https://chatgpt-ads-tracking-checker.vercel.app/
+Check the failure points that can break measurement before you spend: landing reachability, OAI-AdsBot readiness, `oppref` redirect preservation, and basic OpenAI Measurement Pixel setup.
+
+**[Run the live checker](https://chatgpt-ads-tracking-checker.vercel.app/)** — paste a public landing-page URL and get a deterministic PASS/WARN/FAIL report. No signup required.
 
 > Independent project. Not affiliated with or endorsed by OpenAI.
 
@@ -15,6 +17,12 @@ Open-source preflight for ad measurement paths. The current checks focus on read
 - Synthetic `oppref` preservation through redirects.
 - Static OpenAI Measurement Pixel SDK/init evidence and obvious CSP-meta risk.
 - Deterministic PASS/WARN/FAIL findings with remediation and an explainable 0–100 score.
+
+## Focused references
+
+- [OAI-AdsBot readiness](docs/OAI-ADSBOT.md) — what the required ads crawler needs and what a local simulation can and cannot prove.
+- [`oppref` preservation](docs/OPPREF.md) — why the OpenAI click reference matters across redirects and server-side events.
+- [Measurement preflight](docs/MEASUREMENT-PREFLIGHT.md) — a practical launch-time checklist for the landing and conversion path.
 
 ## Important limits
 
@@ -52,7 +60,7 @@ The repository includes `vercel.json` and a serverless `api-handler.js`. A Verce
 
 ## Project status
 
-Version `0.1.1` is intentionally a narrow public preflight. Recurring monitoring, browser runtime inspection, accounts, billing, and hosted deep Pixel/CAPI reconciliation are deferred until usage evidence justifies them. See [STATUS.md](STATUS.md).
+Version `0.1.2` remains intentionally narrow. Recurring monitoring, browser runtime inspection, accounts, billing, and hosted deep Pixel/CAPI reconciliation are deferred until usage evidence justifies them. See [STATUS.md](STATUS.md).
 
 ## Security and privacy
 
@@ -60,8 +68,10 @@ The scanner accepts arbitrary public URLs, so SSRF defense is part of the produc
 
 ## References
 
-Implementation semantics are checked against current public OpenAI Ads documentation, including the Measurement Pixel and Conversions API documentation. Product behavior in this repository remains deliberately narrower than the full platform surface.
+Implementation semantics are checked against current public OpenAI Ads documentation. Product behavior remains deliberately narrower than the full platform surface.
 
+- https://help.openai.com/en/articles/20001243-advertiser-guidance-for-allowing-openai-web-crawlers
+- https://help.openai.com/en/articles/20001409-conversion-measurement
 - https://developers.openai.com/ads/measurement-pixel
 - https://developers.openai.com/ads/conversions-api
 
